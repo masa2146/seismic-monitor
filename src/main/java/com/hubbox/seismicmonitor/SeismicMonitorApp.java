@@ -7,6 +7,7 @@ import com.hubbox.seismicmonitor.service.StaLtaService;
 import com.hubbox.seismicmonitor.view.ConfigurationDialog;
 import com.hubbox.seismicmonitor.view.MonitorView;
 import com.hubbox.seismicmonitor.viewmodel.MonitorViewModel;
+import java.util.Optional;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -14,8 +15,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.Optional;
 
 @Slf4j
 public class SeismicMonitorApp extends Application {
@@ -36,22 +35,17 @@ public class SeismicMonitorApp extends Application {
     }
 
     private void initializeApplication() {
-        // Başlangıç konfigürasyonunu yükle
         config = new AppConfig();
 
-        // Konfigürasyon dialogunu göster
         if (!showConfigurationDialog()) {
             Platform.exit();
             return;
         }
 
-        // Servisleri başlat
         initializeServices();
 
-        // Ana pencereyi göster
         showMainWindow();
 
-        // Pencere kapatma olayını yakala
         primaryStage.setOnCloseRequest(event -> {
             event.consume();
             handleApplicationClose();
@@ -93,7 +87,6 @@ public class SeismicMonitorApp extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
 
-            // İzlemeyi başlat
             viewModel.startMonitoring();
 
             log.info("Main window displayed successfully");

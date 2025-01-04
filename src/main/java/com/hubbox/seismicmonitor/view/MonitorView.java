@@ -159,7 +159,7 @@ public class MonitorView extends BorderPane {
                 selectRect.setWidth(Math.abs(width));
                 selectRect.setHeight(Math.abs(height));
                 event.consume();
-            } else if (event.isMiddleButtonDown() && mouseAnchor.get() != null) {  // Orta tuş ile pan
+            } else if (event.isMiddleButtonDown() && mouseAnchor.get() != null) {
                 double deltaX = event.getX() - mouseAnchor.get().getX();
                 double deltaY = event.getY() - mouseAnchor.get().getY();
 
@@ -209,7 +209,7 @@ public class MonitorView extends BorderPane {
 
         chart.setOnScroll(event -> {
             event.consume();
-            if (event.isControlDown()) {  // CTRL tuşu ile scroll
+            if (event.isControlDown()) {
                 double zoomFactor = 1.1;
                 double deltaY = event.getDeltaY();
 

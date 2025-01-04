@@ -325,12 +325,10 @@ public class ConfigurationDialog extends Dialog<AppConfig> {
     private void addFormElements() {
         int row = 0;
 
-        // Bağlantı Ayarları Başlığı
         Label connectionTitle = new Label(CONNECTION_SETTINGS);
         connectionTitle.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
         grid.add(connectionTitle, 0, row++, 2, 1);
 
-        // Bağlantı Ayarları
         grid.add(new Label(HOST_LABEL), 0, row);
         grid.add(hostField, 1, row++);
 
@@ -346,17 +344,14 @@ public class ConfigurationDialog extends Dialog<AppConfig> {
         grid.add(new Label(CHANNEL_LABEL), 0, row);
         grid.add(channelField, 1, row++);
 
-        // Ayırıcı
         Separator separator = new Separator();
         separator.setPadding(new Insets(10, 0, 10, 0));
         grid.add(separator, 0, row++, 2, 1);
 
-        // Analiz Ayarları Başlığı
         Label analysisTitle = new Label(ANALYSIS_SETTINGS);
         analysisTitle.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
         grid.add(analysisTitle, 0, row++, 2, 1);
 
-        // Analiz Ayarları
         grid.add(new Label(STA_WINDOW_LABEL), 0, row);
         grid.add(staWindowSpinner, 1, row++);
 
@@ -372,21 +367,17 @@ public class ConfigurationDialog extends Dialog<AppConfig> {
         grid.add(new Label(NORMALIZATION_FACTOR_LABEL), 0, row);
         grid.add(normalizationFactorSpinner, 1, row++);
 
-        // Her elemana tooltip ekle
         addTooltips();
 
-        // Grid'i dialog pane'e ekle
         getDialogPane().setContent(grid);
     }
 
     private void addListeners() {
-        // Text alanları için değişiklik dinleyicileri
         hostField.textProperty().addListener((obs, old, newValue) -> validateForm());
         networkField.textProperty().addListener((obs, old, newValue) -> validateForm());
         stationField.textProperty().addListener((obs, old, newValue) -> validateForm());
         channelField.textProperty().addListener((obs, old, newValue) -> validateForm());
 
-        // Spinner'lar için değişiklik dinleyicileri
         portSpinner.valueProperty().addListener((obs, old, newValue) -> validateForm());
         staWindowSpinner.valueProperty().addListener((obs, old, newValue) -> validateForm());
         ltaWindowSpinner.valueProperty().addListener((obs, old, newValue) -> validateForm());
